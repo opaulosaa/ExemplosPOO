@@ -5,6 +5,7 @@ import com.paulosa.streams.dominio.Pessoas;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StreamsTeste {
     private static List <Pessoas> pessoas = new ArrayList<>(List.of(
@@ -15,12 +16,13 @@ public class StreamsTeste {
     ));
     public static void main(String[] args) {
         pessoas.sort(Comparator.comparing(Pessoas::getSexo));
-        List<String> mulheres = new ArrayList<>();
-        for (Pessoas pessoa : pessoas){
-            if (pessoa.getSexo() == 'F'){
-                mulheres.add(pessoa.getNome());
-            }
-        }
+        List<String> mulheres = pessoas.stream()
+
+                .filter(pessoa -> pessoa.getSexo() == 'F')
+
+                .map(Pessoas::getNome)
+
+                .collect(Collectors.toList());
         System.out.println(pessoas);
         System.out.println("----------------");
         System.out.println(mulheres);
