@@ -1,0 +1,5 @@
+com\example\MonolitoWebApplication.class
+com\example\service\ProdutoService.class
+com\example\controller\ProdutoController.class
+com\example\model\Produto.class
+com\example\repository\ProdutoRepository.class
